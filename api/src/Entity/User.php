@@ -20,7 +20,7 @@ class User implements UserInterface, JWTUserInterface, EquatableInterface
 
     public static function createFromPayload($username, array $payload): User
     {
-        return new self($payload['id'], $payload);
+        return new self($payload['username'], $payload);
     }
 
     public function isEqualTo(UserInterface $user): bool

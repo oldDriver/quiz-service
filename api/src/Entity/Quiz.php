@@ -6,9 +6,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  *
- * @ApiResource
+ * @ApiResource(
+ *      collectionOperations={
+ *          "get"={"security"="is_granted('ROLE_USER')"}
+ *      }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
  */
 class Quiz
