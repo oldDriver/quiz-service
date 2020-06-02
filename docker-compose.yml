@@ -58,11 +58,12 @@ services:
   db:
     image: postgres:12-alpine
     environment:
-      - POSTGRES_DB=api
-      - POSTGRES_PASSWORD=!ChangeMe!
-      - POSTGRES_USER=api-platform
-    volumes:
-      - db-data:/var/lib/postgresql/data:rw
+      - POSTGRES_ROOT_PASSWORD=root
+      - POSTGRES_DB=quiz
+      - POSTGRES_PASSWORD=quiz
+      - POSTGRES_USER=quiz
+#    volumes:
+#      - db-data:/var/lib/postgresql/data:rw
       # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./api/docker/db/data:/var/lib/postgresql/data:rw
     ports:
@@ -135,7 +136,7 @@ services:
       - dev-certs:/certs:rw
     ports:
       - target: 80
-        published: 80
+        published: 81
         protocol: tcp
 
 volumes:

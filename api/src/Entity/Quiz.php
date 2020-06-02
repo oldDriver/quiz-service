@@ -7,12 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * This is a dummy entity. Remove it!
  *
  * @ApiResource
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
  */
-class Greeting
+class Quiz
 {
     /**
      * @var int The entity Id
@@ -24,15 +23,29 @@ class Greeting
     private $id;
 
     /**
-     * @var string A nice person
      *
      * @ORM\Column
      * @Assert\NotBlank
      */
-    public $name = '';
+    private string $name = '';
+
+    
+    private string $description = '';
 
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }

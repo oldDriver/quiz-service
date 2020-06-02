@@ -1,0 +1,5 @@
+App\Entity\Quiz:
+    quiz_solid:
+        name: "Quiz SOLID"
+    quiz_rest:
+        name: "Quiz REST"
