@@ -17,7 +17,7 @@ class QuizTest extends ApiTestCase
         static::bootKernel();
         static::populateDatabase();
     }
-    
+
     /**
      * @test
      * @group Functional
