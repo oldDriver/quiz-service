@@ -25,7 +25,7 @@ class Quiz
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      *
@@ -78,7 +78,7 @@ class Quiz
         return $this;
     }
     
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
