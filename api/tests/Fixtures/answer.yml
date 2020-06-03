@@ -1,0 +1,14 @@
+App\Entity\Answer:
+    answer_dummy_1:
+        question: "@question_main"
+        answer: "2024"
+    answer_dummy_2:
+        question: "@question_main"
+        answer: "0024"
+    answer_dummy_3:
+        question: "@question_main"
+        answer: "0044"
+    answer_dummy_4:
+        question: "@question_main"
+        answer: "2044"
+        

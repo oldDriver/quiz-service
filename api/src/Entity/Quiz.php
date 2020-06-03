@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Helper\StringHelper;
 
 
 /**
@@ -15,6 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ApiResource(
  * )
  * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Quiz
 {
@@ -67,6 +69,15 @@ class Quiz
         $this->results = new ArrayCollection();
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateSlug(): self
+    {
+        $this->slug = StringHelper::Slugify($this->name);
+        return $this;
+    }
+    
     public function getId(): int
     {
         return $this->id;

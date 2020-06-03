@@ -6,13 +6,14 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Helper\StringHelper;
 
 
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\AnswerRepository")
- *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Answer
 {
@@ -38,6 +39,15 @@ class Answer
      * @ORM\Column(type="string")
      */
     private $slug;
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateSlug(): self
+    {
+        $this->slug = StringHelper::Slugify($this->answer);
+        return $this;
+    }
 
     public function getId(): ?int
     {

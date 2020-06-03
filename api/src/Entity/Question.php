@@ -7,11 +7,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Helper\StringHelper;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
- *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Question
 {
@@ -42,7 +43,7 @@ class Question
      * @ORM\Column(type="string", nullable=true)
      */
     private string $slug;
-    
+
     /**
      *
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
@@ -53,7 +54,15 @@ class Question
     {
         $this->answers = new ArrayCollection();
     }
-    
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateSlug(): self
+    {
+        $this->slug = StringHelper::Slugify($this->question);
+        return $this;
+    }
 
     public function getId(): ?int
     {

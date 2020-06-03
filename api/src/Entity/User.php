@@ -6,10 +6,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
-class User implements UserInterface, JWTUserInterface, EquatableInterface
+final class User implements UserInterface, JWTUserInterface, EquatableInterface
 {
     private int $id;
+
     private array $roles = [];
+
     public function __construct(int $id, array $payload = [])
     {
         $this->id = $id;
@@ -32,31 +34,32 @@ class User implements UserInterface, JWTUserInterface, EquatableInterface
         
         return $this->getUsername() === $user->getUsername() && 0 === count($rolesDiff);
     }
-    
-    final public function getRoles(): array
+
+    public function getRoles(): array
     {
         return $this->roles;
     }
-    
-    final public function getUsername(): int
+
+    public function getUsername(): int
     {
         return $this->id;
     }
-    
-    final public function eraseCredentials(): void
+
+    public function eraseCredentials(): self
     {
+        return $this;
     }
-    
-    final public function getPassword(): ?string
-    {
-        return null;
-    }
-    
-    final public function getSalt(): ?string
+
+    public function getPassword(): ?string
     {
         return null;
     }
-    
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
     public function getId(): int
     {
         return $this->id;
