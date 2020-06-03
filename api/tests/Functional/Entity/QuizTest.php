@@ -26,9 +26,9 @@ class QuizTest extends ApiTestCase
      */
     public function collection()
     {
-        $client = static::createClient();
-        $client->request(Request::METHOD_GET, $this->testUrl);
-        $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
+//         $client = static::createClient();
+//         $client->request(Request::METHOD_GET, $this->testUrl);
+//         $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
         $client = $this->getJwtClient();
         $client->request(Request::METHOD_GET, $this->testUrl);
         $this->assertResponseIsSuccessful();

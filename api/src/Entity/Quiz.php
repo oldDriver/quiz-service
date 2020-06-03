@@ -47,19 +47,19 @@ class Quiz
      * 
      * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz")
      */
-    private ArrayCollection $questions;
+    private $questions;
 
     /**
      *
      * @ORM\OneToMany(targetEntity="Result", mappedBy="quiz")
      */
-    private ArrayCollection $results;
+    private $results;
     
     
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private Carbon $createdAt;
+    private ?Carbon $createdAt = null;
 
     public function __construct()
     {

@@ -47,7 +47,7 @@ class Question
      *
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      */
-    private ArrayCollection $answers;
+    private $answers;
 
     public function __construct()
     {

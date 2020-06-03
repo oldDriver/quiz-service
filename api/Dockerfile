@@ -9,6 +9,7 @@ ARG OPENRESTY_VERSION=1.15.8.3
 ARG VARNISH_VERSION=6.4
 
 
+
 # "php" stage
 FROM php:${PHP_VERSION}-fpm-alpine AS api_platform_php
 
@@ -22,6 +23,7 @@ RUN apk add --no-cache \
 	;
 
 ARG APCU_VERSION=5.1.18
+ARG XDEBUG_VERSION=2.8.0
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
 		$PHPIZE_DEPS \
@@ -40,11 +42,14 @@ RUN set -eux; \
 	pecl install \
 		apcu-${APCU_VERSION} \
 	; \
+	pecl install xdebug-${XDEBUG_VERSION}; \
+	
 	pecl clear-cache; \
 	docker-php-ext-enable \
 		apcu \
 		opcache \
 	; \
+	docker-php-ext-enable xdebug; \
 	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
