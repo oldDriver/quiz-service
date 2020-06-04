@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Carbon\Carbon;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Helper\StringHelper;
 
@@ -14,10 +16,22 @@ use App\Helper\StringHelper;
 /**
  *
  * @ApiResource(
+ *      attributes={
+ *          "normalization_context"={"groups"={"quiz:questions"}}
+ *      },
  *      collectionOperations={
  *          "get",
  *          "post"={
  *              "security"="is_granted('ROLE_EDITOR')"
+ *          }
+ *      },
+ *      itemOperations={
+ *          "get",
+ *          "patch"={
+ *              "security"="is_granted('ROLE_EDITOR')"
+ *          },
+ *          "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')"
  *          }
  *      }
  * )
@@ -34,7 +48,9 @@ class Quiz
     private ?int $id = null;
 
     /**
-     *
+     * @Groups({
+     *      "quiz:questions"
+     * })
      * @ORM\Column
      * @Assert\NotBlank
      */
@@ -52,14 +68,18 @@ class Quiz
     private string $slug = '';
 
     /**
-     * 
+     * @Groups({
+     *      "quiz:questions"
+     * })
      * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz")
+     * @ApiSubresource(maxDepth=1)
      */
     private $questions;
 
     /**
      *
      * @ORM\OneToMany(targetEntity="Result", mappedBy="quiz")
+     * @ApiSubresource
      */
     private $results;
     
