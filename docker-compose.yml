@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.5'
 
 x-cache-from:
   - &api-cache-from
@@ -61,8 +61,8 @@ services:
       - POSTGRES_DB=api
       - POSTGRES_USER=api-platform
       - POSTGRES_PASSWORD=api-platform
-#    volumes:
-#      - db-data:/var/lib/postgresql/data:rw
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
       # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./api/docker/db/data:/var/lib/postgresql/data:rw
     ports:
