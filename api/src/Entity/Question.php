@@ -32,7 +32,7 @@ class Question
      * 
      * @ORM\Column(type="integer", nullable=true)
      */
-    private int $number;
+    private int $number = 1;
     /**
      * 
      * @ORM\Column(type="text")

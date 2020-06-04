@@ -61,7 +61,11 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+	"test-coverage": [
+            "php -d memory_limit=512M -d pcov.enabled=1 bin/phpunit --coverage-clover=coverage.xml"
+        ],
+        "phpstan": "phpstan analyse --memory-limit=4000M -l 7 -c phpstan.neon src tests"
     },
     "extra": {
         "symfony": {
