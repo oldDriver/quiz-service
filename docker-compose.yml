@@ -58,10 +58,9 @@ services:
   db:
     image: postgres:12-alpine
     environment:
-      - POSTGRES_ROOT_PASSWORD=root
-      - POSTGRES_DB=quiz
-      - POSTGRES_PASSWORD=quiz
-      - POSTGRES_USER=quiz
+      - POSTGRES_DB=api
+      - POSTGRES_USER=api-platform
+      - POSTGRES_PASSWORD=api-platform
 #    volumes:
 #      - db-data:/var/lib/postgresql/data:rw
       # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
