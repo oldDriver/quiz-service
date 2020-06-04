@@ -1,4 +1,5 @@
 App\Entity\Question:
     question_main:
         question: "Two zero, two four"
+        number: 1
         quiz: "@quiz_dummy"

@@ -60,7 +60,7 @@ class Question
      */
     public function generateSlug(): self
     {
-        $this->slug = StringHelper::Slugify($this->question);
+        $this->slug = StringHelper::Slugify(implode(' ', [$this->getQuiz()->getName(), $this->number]));
         return $this;
     }
 
