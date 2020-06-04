@@ -1,14 +1,25 @@
 App\Entity\Answer:
     answer_dummy_1:
-        question: "@question_main"
+        question: "@question_dev_1"
         answer: "2024"
     answer_dummy_2:
-        question: "@question_main"
+        question: "@question_dev_1"
         answer: "0024"
     answer_dummy_3:
-        question: "@question_main"
+        question: "@question_dev_1"
         answer: "0044"
     answer_dummy_4:
-        question: "@question_main"
+        question: "@question_dev_1"
         answer: "2044"
+    answer_dev_1_1:
+        question: "@question_dev_2"
+        answer: "4"
+        isRight: true
+    answer_dev_1_2:
+        question: "@question_dev_2"
+        answer: "5"
+    answer_dev_1_3:
+        question: "@question_dev_2"
+        answer: "11"
+
         

@@ -13,7 +13,6 @@ use App\Helper\StringHelper;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\AnswerRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Answer
 {
@@ -34,20 +33,11 @@ class Answer
      * @ORM\Column(type="text")
      */
     private $answer;
-    
+
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="boolean", nullable=true)
      */
-    private $slug;
-    
-    /**
-     * @ORM\PrePersist
-     */
-    public function generateSlug(): self
-    {
-        $this->slug = StringHelper::Slugify($this->answer);
-        return $this;
-    }
+    private ?bool $isRight = null;
 
     public function getId(): ?int
     {
@@ -66,18 +56,6 @@ class Answer
         return $this;
     }
 
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     public function getQuestion(): ?Question
     {
         return $this->question;
@@ -86,6 +64,18 @@ class Answer
     public function setQuestion(?Question $question): self
     {
         $this->question = $question;
+
+        return $this;
+    }
+
+    public function getIsRight(): ?bool
+    {
+        return $this->isRight;
+    }
+
+    public function setIsRight(?bool $isRight): self
+    {
+        $this->isRight = $isRight;
 
         return $this;
     }

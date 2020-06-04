@@ -14,6 +14,12 @@ use App\Helper\StringHelper;
 /**
  *
  * @ApiResource(
+ *      collectionOperations={
+ *          "get",
+ *          "post"={
+ *              "security"="is_granted('ROLE_EDITOR')"
+ *          }
+ *      }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
  * @ORM\HasLifecycleCallbacks()
