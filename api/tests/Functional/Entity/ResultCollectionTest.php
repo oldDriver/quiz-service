@@ -43,5 +43,18 @@ class ResultCollectionTest extends ApiTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
         $this->assertCount(1, $client->getResponse()->toArray()['hydra:member']);
+        // editor
+        $client = $this->getJwtClient(null, ['ROLE_EDITOR']);
+        $client->request(Request::METHOD_GET, $this->testUrl);
+        $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
+        // admin 
+        $client = $this->getJwtClient(null, ['ROLE_ADMIN']);
+        $client->request(Request::METHOD_GET, $this->testUrl);
+        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
+        $this->assertCount(1, $client->getResponse()->toArray()['hydra:member']);
+        
+        
     }
 }

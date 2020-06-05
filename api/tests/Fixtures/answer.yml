@@ -21,5 +21,198 @@ App\Entity\Answer:
     answer_dev_1_3:
         question: "@question_dev_2"
         answer: "11"
+    answer_design_pattern_1_1:
+        question: "@question_design_pattern_abstract_factory"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_1_2:
+        question: "@question_design_pattern_abstract_factory"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_1_3:
+        question: "@question_design_pattern_abstract_factory"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_1_4:
+        question: "@question_design_pattern_abstract_factory"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_1_5:
+        question: "@question_design_pattern_abstract_factory"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_1_6:
+        question: "@question_design_pattern_abstract_factory"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_2_1:
+        question: "@question_design_pattern_builder"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_2_2:
+        question: "@question_design_pattern_builder"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_2_3:
+        question: "@question_design_pattern_builder"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_2_4:
+        question: "@question_design_pattern_builder"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_2_5:
+        question: "@question_design_pattern_builder"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_2_6:
+        question: "@question_design_pattern_builder"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_3_1:
+        question: "@question_design_pattern_factory_method"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_3_2:
+        question: "@question_design_pattern_factory_method"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_3_3:
+        question: "@question_design_pattern_factory_method"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_3_4:
+        question: "@question_design_pattern_factory_method"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_3_5:
+        question: "@question_design_pattern_factory_method"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_3_6:
+        question: "@question_design_pattern_factory_method"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_4_1:
+        question: "@question_design_pattern_pool"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_4_2:
+        question: "@question_design_pattern_pool"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_4_3:
+        question: "@question_design_pattern_pool"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_4_4:
+        question: "@question_design_pattern_pool"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_4_5:
+        question: "@question_design_pattern_pool"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_4_6:
+        question: "@question_design_pattern_pool"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_5_1:
+        question: "@question_design_pattern_prototype"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_5_2:
+        question: "@question_design_pattern_prototype"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_5_3:
+        question: "@question_design_pattern_prototype"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_5_4:
+        question: "@question_design_pattern_prototype"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_5_5:
+        question: "@question_design_pattern_prototype"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_5_6:
+        question: "@question_design_pattern_prototype"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_6_1:
+        question: "@question_design_pattern_simple_factory"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_6_2:
+        question: "@question_design_pattern_simple_factory"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_6_3:
+        question: "@question_design_pattern_simple_factory"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_6_4:
+        question: "@question_design_pattern_simple_factory"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_6_5:
+        question: "@question_design_pattern_simple_factory"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_6_6:
+        question: "@question_design_pattern_simple_factory"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_7_1:
+        question: "@question_design_pattern_singleton"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_7_2:
+        question: "@question_design_pattern_singleton"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_7_3:
+        question: "@question_design_pattern_singleton"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_7_4:
+        question: "@question_design_pattern_singleton"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_7_5:
+        question: "@question_design_pattern_singleton"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_7_6:
+        question: "@question_design_pattern_singleton"
+        answer: "Architectural"
+        isRight: false
+    answer_design_pattern_8_1:
+        question: "@question_design_pattern_static_factory"
+        answer: "Creational"
+        isRight: true
+    answer_design_pattern_8_2:
+        question: "@question_design_pattern_static_factory"
+        answer: "Structural"
+        isRight: false
+    answer_design_pattern_8_3:
+        question: "@question_design_pattern_static_factory"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_8_4:
+        question: "@question_design_pattern_static_factory"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_8_5:
+        question: "@question_design_pattern_static_factory"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_8_6:
+        question: "@question_design_pattern_static_factory"
+        answer: "Architectural"
+        isRight: false
+        
 
         

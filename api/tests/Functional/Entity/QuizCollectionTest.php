@@ -34,7 +34,7 @@ class QuizCollectionTest extends ApiTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertCount(3, $client->getResponse()->toArray()['hydra:member']);
+        $this->assertCount(4, $client->getResponse()->toArray()['hydra:member']);
         $this->assertMatchesResourceCollectionJsonSchema(Quiz::class);
         // user
         $client = $this->getJwtClient();
@@ -42,7 +42,7 @@ class QuizCollectionTest extends ApiTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertCount(3, $client->getResponse()->toArray()['hydra:member']);
+        $this->assertCount(4, $client->getResponse()->toArray()['hydra:member']);
         $this->assertMatchesResourceCollectionJsonSchema(Quiz::class);
         // editor
         $client = $this->getJwtClient(null, ['ROLE_EDITOR']);
@@ -50,7 +50,7 @@ class QuizCollectionTest extends ApiTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertCount(3, $client->getResponse()->toArray()['hydra:member']);
+        $this->assertCount(4, $client->getResponse()->toArray()['hydra:member']);
         $this->assertMatchesResourceCollectionJsonSchema(Quiz::class);
         // admin
         $client = $this->getJwtClient(null, ['ROLE_ADMIN']);
@@ -58,7 +58,7 @@ class QuizCollectionTest extends ApiTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertCount(3, $client->getResponse()->toArray()['hydra:member']);
+        $this->assertCount(4, $client->getResponse()->toArray()['hydra:member']);
         $this->assertMatchesResourceCollectionJsonSchema(Quiz::class);
     }
 

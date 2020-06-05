@@ -6,3 +6,38 @@ App\Entity\Question:
     question_dev_2:
         question: "2 + 2 = ?"
         quiz: "@quiz_dummy"
+    question_design_pattern_abstract_factory:
+        question: "Abstract Factory"
+        quiz: "@quiz_design_patters"
+        number: 1
+    question_design_pattern_builder:
+        question: "Builder"
+        quiz: "@quiz_design_patters"
+        number: 2
+    question_design_pattern_factory_method:
+        question: "Factory Method"
+        quiz: "@quiz_design_patters"
+        number: 3
+    question_design_pattern_pool:
+        question: "Pool"
+        quiz: "@quiz_design_patters"
+        number: 4
+    question_design_pattern_prototype:
+        question: "Prototype"
+        quiz: "@quiz_design_patters"
+        number: 5
+    question_design_pattern_simple_factory:
+        question: "Simple Factory"
+        quiz: "@quiz_design_patters"
+        number: 6
+    question_design_pattern_singleton:
+        question: "Singleton"
+        quiz: "@quiz_design_patters"
+        number: 7
+    question_design_pattern_static_factory:
+        question: "Static Factory"
+        quiz: "@quiz_design_patters"
+        number: 8
+        
+        
+        

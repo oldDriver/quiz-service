@@ -3,5 +3,7 @@ App\Entity\Quiz:
         name: "Quiz SOLID"
     quiz_rest:
         name: "Quiz REST"
+    quiz_design_patters:
+        name: "Design patterns"
     quiz_dummy:
         name: "Quiz for Developers"

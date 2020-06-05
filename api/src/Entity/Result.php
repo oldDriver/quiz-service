@@ -12,7 +12,15 @@ use App\Annotation\UserAware;
 
 /**
  * @ApiResource(
- *      attributes={"security"="is_granted('ROLE_USER')"},
+ *      collectionOperations={
+ *          "get"={
+ *              "security"="is_granted('ROLE_USER')"
+ *          },
+ *          "start"={
+ *              "security"="is_granted('ROLE_USER')",
+ *              "method"="POST"
+ *          },
+ *      },
  *      subresourceOperations={
  *          "api_quizzes_results_get_subresource"= {
  *              "security"="is_granted('ROLE_USER')"
