@@ -10,7 +10,14 @@ use Carbon\Carbon;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      subresourceOperations={
+ *          "api_quizzes_results_get_subresource"= {
+ *              "security"="is_granted('ROLE_USER')"
+ *          }
+ *      }
+
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ResultRepository")
  *
  */

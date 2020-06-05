@@ -11,7 +11,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use App\Helper\StringHelper;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
  */

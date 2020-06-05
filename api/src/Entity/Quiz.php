@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Helper\StringHelper;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 
 /**
@@ -35,6 +37,7 @@ use App\Helper\StringHelper;
  *          }
  *      }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"slug": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
  * @ORM\HasLifecycleCallbacks()
  */
