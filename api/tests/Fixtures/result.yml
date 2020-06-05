@@ -1,0 +1,4 @@
+App\Entity\Result:
+    result_1:
+        quiz: "@quiz_dummy"
+        userId: 777

@@ -19,7 +19,7 @@ use Carbon\Carbon;
 
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ResultRepository")
- *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Result
 {
@@ -28,24 +28,25 @@ class Result
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * 
      * @ORM\Column(type="bigint")
+     * @Assert\NotNull
      */
     private ?int $userId = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="results")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
+     * @Assert\NotNull
      */
-    private Quiz $quiz;
+    private ?Quiz $quiz = null;
 
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private string $result;
+    private array $result= [];
 
     /**
      * 
@@ -56,24 +57,45 @@ class Result
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private Carbon $createdAt;
+    private ?Carbon $createdAt = null;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private Carbon $updatedAt;
+    private ?Carbon $updatedAt = null;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateCreatedAt(): self
+    {
+        if ($this->createdAt === null) {
+            $this->createdAt = Carbon::now();
+        }
+        return $this;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function generateUpdatedAt(): self
+    {
+        $this->updatedAt = Carbon::now();
+        return $this;
+    }
+    
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?string
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
 
-    public function setUserId(string $userId): self
+    public function setUserId(int $userId): self
     {
         $this->userId = $userId;
 
