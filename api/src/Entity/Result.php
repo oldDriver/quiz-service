@@ -6,18 +6,20 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Carbon\Carbon;
+use App\Annotation\UserAware;
 
 
 
 /**
  * @ApiResource(
+ *      attributes={"security"="is_granted('ROLE_USER')"},
  *      subresourceOperations={
  *          "api_quizzes_results_get_subresource"= {
  *              "security"="is_granted('ROLE_USER')"
  *          }
  *      }
-
  * )
+ * @UserAware(userFieldName="user_id")
  * @ORM\Entity(repositoryClass="App\Repository\ResultRepository")
  * @ORM\HasLifecycleCallbacks()
  */

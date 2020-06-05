@@ -23,31 +23,33 @@ class Question
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
+
     /**
-     * 
      * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="questions")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
+     * @Assert\NotNull
      */
-    private Quiz $quiz;
+    private ?Quiz $quiz = null;
+
     /**
-     * 
      * @ORM\Column(type="integer", nullable=true)
      */
     private int $number = 1;
-    /**
-     * 
-     * @ORM\Column(type="text")
-     */
-    private string $question;
-    /**
-     * 
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private string $slug;
 
     /**
-     *
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    private string $question = '';
+
+    /**
+
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private string $slug = '';
+
+    /**
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      * @ApiSubresource
      */

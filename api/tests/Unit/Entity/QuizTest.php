@@ -90,5 +90,19 @@ class QuizTest extends TestCase
         $this->assertInstanceOf(Carbon::class, $entity->getCreatedAt());
         $this->assertEquals($createdAt, $entity->getCreatedAt());
     }
+
+    /**
+     * @test
+     * @group Unit
+     * @group Entity
+     */
+    public function generateValues()
+    {
+        $entity = new Quiz();
+        $name = "asd-AAf-78 45";
+        $entity->setName($name);
+        $entity->generateSlug();
+        $this->assertEquals('asd-aaf-78-45', $entity->getSlug());
+    }
 }
 
