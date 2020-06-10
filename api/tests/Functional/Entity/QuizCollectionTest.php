@@ -189,7 +189,5 @@ class QuizCollectionTest extends ApiTestCase
         // amonymous
         $client->request(Request::METHOD_GET, $quizUrl.'/results');
         $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
-        
-        
     }
 }
