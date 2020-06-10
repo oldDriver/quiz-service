@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Helper\StringHelper;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -40,6 +41,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ApiFilter(SearchFilter::class, properties={"slug": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("name")
  */
 class Quiz
 {
@@ -60,6 +62,9 @@ class Quiz
     private string $name = '';
 
     /**
+     * @Groups({
+     *      "quiz:questions"
+     * })
      * @ORM\Column(type="text", nullable=true)
      */
     private string $description = '';
@@ -103,6 +108,9 @@ class Quiz
      */
     public function generateSlug(): self
     {
+        if ($this->createdAt === null) {
+            $this->createdAt = Carbon::now();
+        }
         $this->slug = StringHelper::Slugify($this->name);
         return $this;
     }

@@ -16,4 +16,22 @@ trait FunctionalTestTrait
         $token = $jwtManager->create($user);
         return static::createClient([], ['auth_bearer' => $token]);
     }
+
+    public function getJwtEditorClient(?int $id = null)
+    {
+        return $this->getJwtClient($id, ['ROLE_EDITOR']);
+    }
+
+    public function getJwtAdminClient(?int $id = null)
+    {
+        return $this->getJwtClient($id, ['ROLE_ADMIN']);
+    }
+    
+    public function getTestQuiz(): array
+    {
+        return [
+            'name' => 'Test Crud',
+            'description' => 'Test description for test quiz'
+        ];
+    }
 }

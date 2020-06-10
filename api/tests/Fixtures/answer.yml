@@ -213,6 +213,30 @@ App\Entity\Answer:
         question: "@question_design_pattern_static_factory"
         answer: "Architectural"
         isRight: false
+    answer_design_pattern_9_1:
+        question: "@question_design_pattern_static_factory"
+        answer: "Creational"
+        isRight: false
+    answer_design_pattern_9_2:
+        question: "@question_design_pattern_static_factory"
+        answer: "Structural"
+        isRight: true
+    answer_design_pattern_9_3:
+        question: "@question_design_pattern_static_factory"
+        answer: "Behavioral"
+        isRight: false
+    answer_design_pattern_9_4:
+        question: "@question_design_pattern_static_factory"
+        answer: "Functional"
+        isRight: false
+    answer_design_pattern_9_5:
+        question: "@question_design_pattern_static_factory"
+        answer: "Concurrency"
+        isRight: false
+    answer_design_pattern_9_6:
+        question: "@question_design_pattern_static_factory"
+        answer: "Architectural"
+        isRight: false
         
 
         

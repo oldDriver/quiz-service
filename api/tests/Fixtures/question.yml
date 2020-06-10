@@ -38,6 +38,10 @@ App\Entity\Question:
         question: "Static Factory"
         quiz: "@quiz_design_patters"
         number: 8
+    question_design_pattern_adapter:
+        question: "Adapter"
+        quiz: "@quiz_design_patters"
+        number: 9
         
         
         
