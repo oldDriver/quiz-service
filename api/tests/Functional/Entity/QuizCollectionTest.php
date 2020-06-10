@@ -23,6 +23,7 @@ class QuizCollectionTest extends ApiTestCase
 
     /**
      * @test
+     * @large
      * @group Functional
      * @group Entity
      * @group Quiz
@@ -65,6 +66,7 @@ class QuizCollectionTest extends ApiTestCase
 
     /**
      * @test
+     * @large
      * @group Functional
      * @group Entity
      * @group Quiz
@@ -98,6 +100,7 @@ class QuizCollectionTest extends ApiTestCase
 
     /**
      * @test
+     * @large
      * @group Functional
      * @group Entity
      * @group Quiz
@@ -123,6 +126,7 @@ class QuizCollectionTest extends ApiTestCase
 
     /**
      * @test
+     * @large
      * @group Functional
      * @group Quiz
      */
@@ -172,6 +176,7 @@ class QuizCollectionTest extends ApiTestCase
 
     /**
      * @test
+     * @large
      * @group Functional
      * @group Quiz
      */

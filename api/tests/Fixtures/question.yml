@@ -5,6 +5,7 @@ App\Entity\Question:
         quiz: "@quiz_dummy"
     question_dev_2:
         question: "2 + 2 = ?"
+        number: 2
         quiz: "@quiz_dummy"
     question_design_pattern_abstract_factory:
         question: "Abstract Factory"
