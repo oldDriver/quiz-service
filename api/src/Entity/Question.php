@@ -12,6 +12,20 @@ use App\Helper\StringHelper;
 
 /**
  * @ApiResource(
+ *      collectionOperations={
+ *          "post"={
+ *              "security"="is_granted('ROLE_EDITOR')"
+ *          }
+ *      },
+ *      itemOperations={
+ *          "get",
+ *          "patch"={
+ *              "security"="is_granted('ROLE_EDITOR')"
+ *          },
+ *          "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')"
+ *          }
+ *      }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()

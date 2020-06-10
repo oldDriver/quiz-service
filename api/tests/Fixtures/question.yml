@@ -39,9 +39,122 @@ App\Entity\Question:
         quiz: "@quiz_design_patters"
         number: 8
     question_design_pattern_adapter:
-        question: "Adapter"
+        question: "Adapter/Wrapper"
         quiz: "@quiz_design_patters"
         number: 9
-        
+    question_design_pattern_bridge:
+        question: "Bridge"
+        quiz: "@quiz_design_patters"
+        number: 10
+    question_design_pattern_composite:
+        question: "Composite"
+        quiz: "@quiz_design_patters"
+        number: 11
+    question_design_pattern_data_mapper:
+        question: "Data Mapper"
+        quiz: "@quiz_design_patters"
+        number: 12
+    question_design_pattern_decorator:
+        question: "Decorator"
+        quiz: "@quiz_design_patters"
+        number: 13
+    question_design_pattern_di:
+        question: "Dependency Injection"
+        quiz: "@quiz_design_patters"
+        number: 14
+    question_design_pattern_facade:
+        question: "Facade"
+        quiz: "@quiz_design_patters"
+        number: 15
+    question_design_pattern_fluent_interface:
+        question: "Fluent Interface"
+        quiz: "@quiz_design_patters"
+        number: 16
+    question_design_pattern_flyweight:
+        question: "Flyweight"
+        quiz: "@quiz_design_patters"
+        number: 17
+    question_design_pattern_proxy:
+        question: "Proxy"
+        quiz: "@quiz_design_patters"
+        number: 18
+    question_design_pattern_registry:
+        question: "Registry"
+        quiz: "@quiz_design_patters"
+        number: 19
+    question_design_pattern_chain_responsibilities:
+        question: "Chain of Responsibilities"
+        quiz: "@quiz_design_patters"
+        number: 20
+    question_design_pattern_command:
+        question: "Command"
+        quiz: "@quiz_design_patters"
+        number: 21
+    question_design_pattern_iterator:
+        question: "Iterator"
+        quiz: "@quiz_design_patters"
+        number: 22
+    question_design_pattern_mediator:
+        question: "Mediator"
+        quiz: "@quiz_design_patters"
+        number: 23
+    question_design_pattern_memento:
+        question: "Memento"
+        quiz: "@quiz_design_patters"
+        number: 24
+    question_design_pattern_null_object:
+        question: "Null Object"
+        quiz: "@quiz_design_patters"
+        number: 25
+    question_design_pattern_observer:
+        question: "Observer"
+        quiz: "@quiz_design_patters"
+        number: 26
+    question_design_pattern_specification:
+        question: "Specification"
+        quiz: "@quiz_design_patters"
+        number: 27
+    question_design_pattern_state:
+        question: "State"
+        quiz: "@quiz_design_patters"
+        number: 28
+    question_design_pattern_strategy:
+        question: "Strategy"
+        quiz: "@quiz_design_patters"
+        number: 29
+    question_design_pattern_template_method:
+        question: "Template Method"
+        quiz: "@quiz_design_patters"
+        number: 30
+    question_design_pattern_visitor:
+        question: "Visitor"
+        quiz: "@quiz_design_patters"
+        number: 31
+    question_design_pattern_eav:
+        question: "Entity-Attribute-Value(EAV)"
+        quiz: "@quiz_design_patters"
+        number: 32
+    question_design_pattern_immutable_object:
+        question: "Immutable Object"
+        quiz: "@quiz_design_patters"
+        number: 33
+    question_design_pattern_active_record:
+        question: "Active Record"
+        quiz: "@quiz_design_patters"
+        number: 34
+    question_design_pattern_client-server:
+        question: "Client-server"
+        quiz: "@quiz_design_patters"
+        number: 35
+    question_design_pattern_dto:
+        question: "DTO"
+        quiz: "@quiz_design_patters"
+        number: 36
+
+
+
+
+
+
         
         
