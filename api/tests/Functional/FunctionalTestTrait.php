@@ -2,6 +2,7 @@
 namespace App\Tests\Functional;
 
 use App\Entity\User;
+use App\Entity\Quiz;
 
 trait FunctionalTestTrait
 {
@@ -32,6 +33,16 @@ trait FunctionalTestTrait
         return [
             'name' => 'Test Crud',
             'description' => 'Test description for test quiz'
+        ];
+    }
+
+    public function getQuestionCreateArray(): array
+    {
+        static::bootKernel();
+        $quizIri = static::findIriBy(Quiz::class, ['slug' => 'quiz-for-developers']);
+        return [
+            'quiz' => $quizIri,
+            'question' => 'Are you here?'
         ];
     }
 }

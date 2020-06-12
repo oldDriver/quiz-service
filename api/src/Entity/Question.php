@@ -64,7 +64,7 @@ class Question
     private string $slug = '';
 
     /**
-     * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"remove"})
      * @ApiSubresource
      */
     private $answers;
