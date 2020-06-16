@@ -10,10 +10,12 @@
         "guzzlehttp/guzzle": "^6.3",
         "lexik/jwt-authentication-bundle": "^2.7",
         "nesbot/carbon": "^2.35",
+        "symfony/browser-kit": "5.0.*",
         "symfony/console": "5.0.*",
         "symfony/dotenv": "5.0.*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "5.0.*",
+        "symfony/http-client": "5.0.*",
         "symfony/mercure-bundle": "^0.2",
         "symfony/messenger": "5.0.*",
         "symfony/security-bundle": "5.0.*",
@@ -52,7 +54,8 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+	"process-timeout": 0
     },
     "scripts": {
         "auto-scripts": {
@@ -66,7 +69,7 @@
             "@auto-scripts"
         ],
 	"test-coverage": [
-            "php -d memory_limit=1024M -d pcov.enabled=1 bin/phpunit --coverage-clover=coverage.xml"
+            "php -d memory_limit=2048M bin/phpunit"
         ],
         "phpstan": "phpstan analyse --memory-limit=4000M -l 7 -c phpstan.neon src tests"
     },
