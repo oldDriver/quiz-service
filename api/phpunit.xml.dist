@@ -3,7 +3,7 @@
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
+         backupGlobals="true"
          colors="true"
          bootstrap="config/bootstrap.php"
 >
@@ -12,7 +12,7 @@
         <server name="APP_ENV" value="test" force="true" />
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
-        <server name="SYMFONY_PHPUNIT_VERSION" value="8.5" />
+        <server name="SYMFONY_PHPUNIT_VERSION" value="9.0" />
         <server name="PHPUNIT_PRETTY_PRINT_PROGRESS" value="true" />
     </php>
 
@@ -38,7 +38,7 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
     </logging>
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
