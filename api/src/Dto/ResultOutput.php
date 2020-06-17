@@ -3,5 +3,5 @@ namespace App\Dto;
 
 class ResultOutput
 {
-    public string $resultIri;
+    public string $id;
 }

@@ -49,7 +49,7 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
         if (empty($result)) {
             $result = $this->resultService->startQuiz($user, $quiz);
         }
-        return $data;
+        return $result;
     }
     
     public function remove($data, array $context = [])

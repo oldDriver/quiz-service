@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "get"={
  *              "security"="is_granted('ROLE_USER')"
  *          },
- *          "start"={
+ *          "post"={
  *              "security"="is_granted('ROLE_USER')",
  *              "method"="POST",
  *              "path"="results",

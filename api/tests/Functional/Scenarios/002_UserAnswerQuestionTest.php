@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Question;
 use Symfony\Component\VarDumper\VarDumper;
 use App\Entity\Result;
+use App\Dto\ResultOutput;
 
 class UserAnswerQuestionTest extends ApiTestCase
 {
@@ -35,7 +36,11 @@ class UserAnswerQuestionTest extends ApiTestCase
         $client->request(Request::METHOD_POST, $this->testUrl, ['json' => ['quizIri' => $quizIri]]);
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
-        VarDumper::dump(json_decode($client->getResponse()->getContent(), true));
+        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
+        $this->assertRegExp('~^/results/\d+$~', $client->getResponse()->toArray()['@id']);
+        $this->assertMatchesResourceItemJsonSchema(Result::class);
+        
+//         VarDumper::dump(json_decode($client->getResponse()->getContent(), true));
         // User find results for this quiz
         //$client->request(Request::METHOD_GET, $this->resultsUrl.'?quiz_id='.$quizId);
 //         VarDumper::dump(json_decode($client->getResponse()->getContent(false), true));
