@@ -34,7 +34,7 @@ class UserAnswerQuestionTest extends ApiTestCase
         $quizId = str_replace('/quizzes/', '', $quizIri);
         $client->request(Request::METHOD_POST, $this->testUrl, ['json' => ['quizIri' => $quizIri]]);
         $this->assertResponseIsSuccessful();
-        $this->assertResponseStatusCodeSame(Response::HTTP_ACCEPTED);
+        $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
         VarDumper::dump(json_decode($client->getResponse()->getContent(), true));
         // User find results for this quiz
         //$client->request(Request::METHOD_GET, $this->resultsUrl.'?quiz_id='.$quizId);

@@ -32,17 +32,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "normalization_context"={"groups"={"result:read"}},
  *          }
  *      },
- *      itemOperations={
- *          "answer"={
- *              "security"="is_granted('ROLE_USER')",
- *              "method"="PATCH",
- *              "path"="results/{id}/answer",
- *              "input"=AnswerInput::class,
- *              "output"=AnswerOutput::class,
- *              "messenger"=true
- *          },
- *          
- *      },
  *      subresourceOperations={
  *          "api_quizzes_results_get_subresource"= {
  *              "security"="is_granted('ROLE_USER')"
