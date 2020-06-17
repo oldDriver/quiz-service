@@ -7,6 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Carbon\Carbon;
 use App\Annotation\UserAware;
+use App\Dto\AnswerInput;
+use App\Dto\AnswerOutput;
+use App\Dto\QuizStart;
+use App\Dto\ResultOutput;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 
 
@@ -18,8 +24,24 @@ use App\Annotation\UserAware;
  *          },
  *          "start"={
  *              "security"="is_granted('ROLE_USER')",
- *              "method"="POST"
+ *              "method"="POST",
+ *              "path"="results",
+ *              "input"=QuizStart::class,
+ *              "output"=ResultOutput::class,
+ *              "messenger"="input",
+ *              "normalization_context"={"groups"={"result:read"}},
+ *          }
+ *      },
+ *      itemOperations={
+ *          "answer"={
+ *              "security"="is_granted('ROLE_USER')",
+ *              "method"="PATCH",
+ *              "path"="results/{id}/answer",
+ *              "input"=AnswerInput::class,
+ *              "output"=AnswerOutput::class,
+ *              "messenger"=true
  *          },
+ *          
  *      },
  *      subresourceOperations={
  *          "api_quizzes_results_get_subresource"= {
@@ -37,12 +59,16 @@ class Result
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"result:read"})
      */
     private ?int $id = null;
 
     /**
      * @ORM\Column(type="bigint")
      * @Assert\NotNull
+     * @Groups({
+     *      "result:start"
+     * })
      */
     private ?int $userId = null;
 
@@ -50,6 +76,7 @@ class Result
      * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="results")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
      * @Assert\NotNull
+     * @Groups({"result:start"})
      */
     private ?Quiz $quiz = null;
 

@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Helper\StringHelper;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 
@@ -31,6 +32,9 @@ class Answer
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({
+     *      "question:read"
+     * })
      */
     private $answer;
 

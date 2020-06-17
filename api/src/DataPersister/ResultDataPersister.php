@@ -1,17 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+namespace App\DataPersister;
 
-namespace App\Handler;
-
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
-use App\Command\QuizStartCommand;
+use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
+use App\Entity\Result;
 use ApiPlatform\Core\Api\IriConverterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use App\Entity\User;
 use App\Service\ResultService;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Result;
+use Symfony\Component\VarDumper\VarDumper;
+use App\Dto\QuizStart;
+use App\Entity\User;
 
-class QuizStartCommandHandler implements MessageHandlerInterface
+
+class ResultDataPersister implements ContextAwareDataPersisterInterface
 {
     private TokenStorageInterface $tokenStorage;
     private IriConverterInterface $iriConverter;
@@ -22,23 +23,38 @@ class QuizStartCommandHandler implements MessageHandlerInterface
         IriConverterInterface $iriConverter,
         ResultService $resultService,
         EntityManagerInterface $em
-    ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->iriConverter = $iriConverter;
-        $this->resultService = $resultService;
-        $this->em = $em;
+        ) {
+            $this->tokenStorage = $tokenStorage;
+            $this->iriConverter = $iriConverter;
+            $this->resultService = $resultService;
+            $this->em = $em;
     }
-    public function __invoke(QuizStartCommand $quizStartRequest)
+    
+    public function supports($data, array $context = []): bool
     {
+        return $data instanceof QuizStart;
+    }
+    
+    public function persist($data, array $context = [])
+    {
+        // call your persistence layer to save $data
         if (null === $this->tokenStorage->getToken() || !$this->tokenStorage->getToken()->getUser() instanceof User) {
             throw new \Exception();
         }
+        //VarDumper::dump($data); exit;
         $user = $this->tokenStorage->getToken()->getUser();
-        $quiz = $this->iriConverter->getItemFromIri($quizStartRequest->getQuizIri());
+        $quiz = $this->iriConverter->getItemFromIri($data->quizIri);
+        
         $result = $this->em->getRepository(Result::class)->findOneBy(['quiz' => $quiz, 'userId' => $user->getId()]);
         if (empty($result)) {
             $result = $this->resultService->startQuiz($user, $quiz);
         }
-        return $result;
+        return $data;
+    }
+    
+    public function remove($data, array $context = [])
+    {
+        return false;
+        // call your persistence layer to delete $data
     }
 }

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Helper\StringHelper;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
@@ -18,14 +19,19 @@ use App\Helper\StringHelper;
  *          }
  *      },
  *      itemOperations={
- *          "get",
+ *          "get"={
+ *              "normalization_context"={"groups"={"question:read"}},
+ *          },
  *          "patch"={
  *              "security"="is_granted('ROLE_EDITOR')"
  *          },
  *          "delete"={
  *              "security"="is_granted('ROLE_ADMIN')"
  *          }
- *      }
+ *      },
+ *      attributes={
+ *         "normalization_context"={"enable_max_depth"=true},
+ *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -54,6 +60,9 @@ class Question
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
+     * @Groups({
+     *      "question:read"
+     * })
      */
     private string $question = '';
 
@@ -66,6 +75,9 @@ class Question
     /**
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"remove"})
      * @ApiSubresource
+     * @Groups({
+     *      "question:read"
+     * })
      */
     private $answers;
 
