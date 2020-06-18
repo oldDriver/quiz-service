@@ -85,7 +85,7 @@ class Result
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private array $result = [];
+    private $result = [];
 
     /**
      * 
@@ -141,12 +141,18 @@ class Result
         return $this;
     }
 
-    public function getResult(): ?array
+    public function getResult()
     {
         return $this->result;
     }
 
-    public function setResult(?array $result): self
+    public function addResult($result): self
+    {
+        $this->result[] = $result;
+        return $this;
+    }
+
+    public function setResult($result): self
     {
         $this->result = $result;
 

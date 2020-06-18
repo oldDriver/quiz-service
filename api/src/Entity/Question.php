@@ -42,6 +42,7 @@ class Question
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user:answer"})
      */
     private ?int $id = null;
 
@@ -54,6 +55,7 @@ class Question
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"user:answer"})
      */
     private int $number = 1;
 
@@ -63,6 +65,7 @@ class Question
      * @Groups({
      *      "question:read"
      * })
+     * @Groups({"user:answer"})
      */
     private string $question = '';
 
@@ -78,6 +81,7 @@ class Question
      * @Groups({
      *      "question:read"
      * })
+     * @Groups({"user:answer"})
      */
     private $answers;
 

@@ -105,7 +105,7 @@ class UserAnswerQuestionTest extends ApiTestCase
         $this->assertMatchesResourceItemJsonSchema(Result::class);
         
         
-        VarDumper::dump(json_decode($client->getResponse()->getContent(false), true));
+//         VarDumper::dump(json_decode($client->getResponse()->getContent(false), true));
 //         VarDumper::dump($answer);
     }
 }

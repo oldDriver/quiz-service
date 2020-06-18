@@ -35,11 +35,13 @@ class Answer
      * @Groups({
      *      "question:read"
      * })
+     * @Groups({"user:answer"})
      */
     private $answer;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"user:answer"})
      */
     private ?bool $isRight = null;
 
