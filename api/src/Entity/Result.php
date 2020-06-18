@@ -12,6 +12,7 @@ use App\Dto\AnswerOutput;
 use App\Dto\QuizStart;
 use App\Dto\ResultOutput;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 
@@ -30,6 +31,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "output"=ResultOutput::class,
  *              "messenger"="input",
  *              "normalization_context"={"groups"={"result:read"}},
+ *          }
+ *      },
+ *      itemOperations={
+ *          "get"={
+ *              "security"="is_granted('ROLE_USER')"
+ *          },
+ *          "update"={
+ *              "security"="is_granted('ROLE_USER')",
+ *              "method"="PATCH",
+ *              "input"=AnswerInput::class,
+ *              "output"=AnswerOutput::class,
+ *              "messenger"="input",
  *          }
  *      },
  *      subresourceOperations={
@@ -72,7 +85,7 @@ class Result
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private array $result= [];
+    private array $result = [];
 
     /**
      * 

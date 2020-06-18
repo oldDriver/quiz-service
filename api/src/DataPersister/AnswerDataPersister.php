@@ -2,16 +2,17 @@
 namespace App\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
-use App\Entity\Result;
 use ApiPlatform\Core\Api\IriConverterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use App\Service\ResultService;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Dto\QuizStart;
 use App\Entity\User;
+use App\Dto\AnswerInput;
+use Symfony\Component\VarDumper\VarDumper;
+use App\Entity\Result;
 
 
-class ResultDataPersister implements ContextAwareDataPersisterInterface
+class AnswerDataPersister implements ContextAwareDataPersisterInterface
 {
     private TokenStorageInterface $tokenStorage;
     private IriConverterInterface $iriConverter;
@@ -31,7 +32,7 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
     
     public function supports($data, array $context = []): bool
     {
-        return $data instanceof QuizStart;
+        return $data instanceof AnswerInput;
     }
     
     public function persist($data, array $context = [])
@@ -42,11 +43,13 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
         }
         $user = $this->tokenStorage->getToken()->getUser();
         $quiz = $this->iriConverter->getItemFromIri($data->quizIri);
-        
+        $question = $this->iriConverter->getItemFromIri($data->questionIri);
+        $answer = $this->iriConverter->getItemFromIri($data->answerIri);
         $result = $this->em->getRepository(Result::class)->findOneBy(['quiz' => $quiz, 'userId' => $user->getId()]);
         if (empty($result)) {
-            $result = $this->resultService->startQuiz($user, $quiz);
+            throw new \Exception();
         }
+        $result = $this->resultService->addAnswer($user, $result, $question, $answer);
         return $result;
     }
     
