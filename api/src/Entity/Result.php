@@ -57,6 +57,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Result
 {
+    public const STATUS_NEW = 'new';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_FINISHED = 'finished';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -85,13 +88,17 @@ class Result
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private $result = [];
+    private array $result = [];
 
     /**
-     * 
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="smallint")
      */
-    private float $score = 0;
+    private int $score = 0;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private int $total = 0;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -103,6 +110,12 @@ class Result
      */
     private ?Carbon $updatedAt = null;
 
+    /**
+     * @ORM\Column(type="string", columnDefinition="enum_result_status", nullable=true)
+     * @Groups({"result:read"})
+     */
+    private string $status = Result::STATUS_NEW;
+    
     /**
      * @ORM\PrePersist
      */
@@ -141,30 +154,30 @@ class Result
         return $this;
     }
 
-    public function getResult()
+    public function getResult(): array
     {
         return $this->result;
     }
 
-    public function addResult($result): self
+    public function addResult(string $result): self
     {
         $this->result[] = $result;
         return $this;
     }
 
-    public function setResult($result): self
+    public function setResult(array $result): self
     {
         $this->result = $result;
 
         return $this;
     }
 
-    public function getScore(): ?float
+    public function getScore(): ?int
     {
         return $this->score;
     }
 
-    public function setScore(float $score): self
+    public function setScore(int $score): self
     {
         $this->score = $score;
 
@@ -203,6 +216,30 @@ class Result
     public function setQuiz(?Quiz $quiz): self
     {
         $this->quiz = $quiz;
+
+        return $this;
+    }
+
+    public function getTotal(): ?int
+    {
+        return $this->total;
+    }
+
+    public function setTotal(?int $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

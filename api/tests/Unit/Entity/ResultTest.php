@@ -55,7 +55,7 @@ class ResultTest extends TestCase
         $userId = TestHelper::getTestInt();
         $quiz = $this->createMock(Quiz::class);
         $result = [TestHelper::getTestString() => TestHelper::getTestInt()];
-        $score = floatval(TestHelper::getTestInt() / 100);
+        $score = TestHelper::getTestInt();
         $createdAt = Carbon::now()->subMonth();
         $updatedAt = Carbon::now()->subWeek();
         $entity = new Result();
@@ -73,7 +73,7 @@ class ResultTest extends TestCase
         $this->assertEquals($result, $entity->getResult());
         // score
         $this->assertInstanceOf(Result::class, $entity->setScore($score));
-        $this->assertIsFloat($entity->getScore());
+        $this->assertIsInt($entity->getScore());
         $this->assertEquals($score, $entity->getScore());
         // createdAt
         $this->assertInstanceOf(Result::class, $entity->setCreatedAt($createdAt));
