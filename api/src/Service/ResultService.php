@@ -14,6 +14,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\VarDumper\VarDumper;
 
 class ResultService
 {
@@ -42,8 +43,12 @@ class ResultService
         return $result;
     }
 
-    public function addAnswer(User $user, Result $result, Question $question, Answer $answer): Result
+    public function addAnswer(User $user, Result $result, Question $question, Answer $answer): ?Result
     {
+        $data = $result->getResult();
+        if ($this->isExistingQuestion($data, $question)) {
+            return null;
+        }
         $userAnswer = new UserAnswer();
         $userAnswer->setQuestion($question);
         $userAnswer->setAnswer($answer);
@@ -57,5 +62,15 @@ class ResultService
         $this->em->persist($result);
         $this->em->flush();
         return $result;
+    }
+
+    private function isExistingQuestion(array $arrayQuestions, Question $question): bool
+    {
+        $questionIds = [];
+        foreach ($arrayQuestions as $item) {
+            $arrayItem = json_decode($item, true);
+            $questionIds[] = $arrayItem['question']['id'];
+        }
+        return in_array($question->getId(), $questionIds);
     }
 }
