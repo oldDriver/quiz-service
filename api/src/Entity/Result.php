@@ -14,9 +14,6 @@ use App\Dto\ResultOutput;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
-
-
 /**
  * @ApiResource(
  *      collectionOperations={
@@ -132,6 +129,10 @@ class Result
      */
     public function generateUpdatedAt(): self
     {
+        $this->status = self::STATUS_ACTIVE;
+        if (count($this->result) == $this->total) {
+            $this->status = self::STATUS_FINISHED;
+        }
         $this->updatedAt = Carbon::now();
         return $this;
     }

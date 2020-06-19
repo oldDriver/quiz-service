@@ -36,6 +36,7 @@ class ResultService
         $result = new Result();
         $result->setQuiz($quiz);
         $result->setUserId($user->getId());
+        $result->setTotal($quiz->getQuestions()->count());
         $this->em->persist($result);
         $this->em->flush();
         return $result;
@@ -48,6 +49,11 @@ class ResultService
         $userAnswer->setAnswer($answer);
         $data = $this->serializer->serialize($userAnswer, 'json', ['groups' => 'user:answer']);
         $result->addResult($data);
+        $score = $result->getScore();
+        if ($answer->getIsRight()) {
+            $score++;
+            $result->setScore($score);
+        }
         $this->em->persist($result);
         $this->em->flush();
         return $result;
