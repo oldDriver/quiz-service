@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
-final class User implements UserInterface, JWTUserInterface, EquatableInterface
+class User implements UserInterface, JWTUserInterface, EquatableInterface
 {
     private int $id;
 
