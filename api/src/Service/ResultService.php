@@ -7,14 +7,13 @@ use App\Entity\Result;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Question;
 use App\Entity\Answer;
-use App\Entity\UserAnswer;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\VarDumper\VarDumper;
+use App\ValueObject\UserAnswer;
 
 class ResultService
 {
@@ -34,7 +33,7 @@ class ResultService
 
     public function startQuiz(User $user, Quiz $quiz): Result
     {
-        $result = $this->createResult();
+        $result = $this->createUserResult();
         $result->setQuiz($quiz);
         $result->setUserId($user->getId());
         $result->setTotal($quiz->getQuestions()->count());
@@ -49,10 +48,7 @@ class ResultService
         if ($this->isExistingQuestion($data, $question)) {
             return null;
         }
-        $userAnswer = $this->createUserAnswer();
-        $userAnswer->setQuestion($question);
-        $userAnswer->setAnswer($answer);
-        $data = $this->serializer->serialize($userAnswer, 'json', ['groups' => 'user:answer']);
+        $data = $this->getAnswerData($question, $answer);
         $result->addResult($data);
         $score = $result->getScore();
         if ($answer->getIsRight()) {
@@ -64,7 +60,15 @@ class ResultService
         return $result;
     }
 
-    private function isExistingQuestion(array $arrayQuestions, Question $question): bool
+    public function getAnswerData(Question $question, Answer $answer): string
+    {
+        $userAnswer = $this->createUserAnswer();
+        $userAnswer->setQuestion($question);
+        $userAnswer->setAnswer($answer);
+        return $this->serializer->serialize($userAnswer, 'json', ['groups' => 'user:answer']);
+    }
+
+    public function isExistingQuestion(array $arrayQuestions, Question $question): bool
     {
         $questionIds = [];
         foreach ($arrayQuestions as $item) {
@@ -77,7 +81,7 @@ class ResultService
     /**
      * Simple factory
      */
-    public function createResult(): Result
+    public function createUserResult(): Result
     {
         return new Result();
     }

@@ -1,21 +1,26 @@
 <?php
-namespace App\Entity;
+namespace App\ValueObject;
 
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Entity\Question;
+use App\Entity\Answer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class UserAnswer
 {
     /**
      * @MaxDepth(1)
      * @Groups({"user:answer"})
+     * @Assert\NotNull
      */
-    private Question $question;
+    private ?Question $question = null;
     /**
      * @MaxDepth(1)
      * @Groups({"user:answer"})
+     * @Assert\NotNull
      */
-    private Answer $answer;
+    private ?Answer $answer = null;
 
     public function setQuestion(Question $question): self
     {
@@ -23,7 +28,7 @@ class UserAnswer
         return $this;
     }
 
-    public function getQuestion(): Question
+    public function getQuestion(): ?Question
     {
         return $this->question;
     }
@@ -34,7 +39,7 @@ class UserAnswer
         return $this;
     }
 
-    public function getAnswer(): Answer
+    public function getAnswer(): ?Answer
     {
         return $this->answer;
     }
