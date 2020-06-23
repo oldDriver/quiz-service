@@ -75,8 +75,8 @@ class QuestionServiceTest extends TestCase
         $newQuestion = $this->createMock(Question::class);
         // behavior
         $newQuestion->expects($this->once())->method('getQuiz')->willReturn($quiz);
-        $newQuestion->expects($this->once())->method('setNumber')->with($expected);
-        $newQuestion->expects($this->once())->method('generateSlug');
+        $newQuestion->method('setNumber')->with($expected);
+        $newQuestion->method('generateSlug');
         $service = $this->getMockBuilder(QuestionService::class)->setConstructorArgs([$em])->setMethodsExcept(['setNumber'])->getMock();
         $service->expects($this->once())->method('getQuestionsByQuiz')->with($quiz)->willReturn($case['questions']);
         $service->method('fixQuizNumbers')->willReturn($case['counter']);

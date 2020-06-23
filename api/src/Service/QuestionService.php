@@ -22,14 +22,13 @@ class QuestionService
      */
     public function setNumber(Question $question): Question
     {
-        $counter = 1;
         $quiz = $question->getQuiz();
         $questions = $this->getQuestionsByQuiz($quiz);
         if (!empty($questions)) {
             $counter = $this->fixQuizNumbers($quiz);
+            $question->setNumber($counter);
+            $question->generateSlug();
         }
-        $question->setNumber($counter);
-        $question->generateSlug();
         return $question;
     }
 
