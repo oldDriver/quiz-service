@@ -63,9 +63,9 @@ class Question
      * @ORM\Column(type="text")
      * @Assert\NotBlank
      * @Groups({
-     *      "question:read"
+     *      "question:read",
+     *      "user:answer"
      * })
-     * @Groups({"user:answer"})
      */
     private string $question = '';
 
@@ -79,9 +79,9 @@ class Question
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question", cascade={"remove"})
      * @ApiSubresource
      * @Groups({
-     *      "question:read"
+     *      "question:read",
+     *      "user:answer"
      * })
-     * @Groups({"user:answer"})
      */
     private $answers;
 

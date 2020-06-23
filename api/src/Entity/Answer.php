@@ -22,26 +22,29 @@ class Answer
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
+
     /**
-     *
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * @Assert\NotNull
      */
-    private Question $question;
+    private ?Question $question = null;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({
-     *      "question:read"
+     *      "question:read",
+     *      "user:answer"
      * })
-     * @Groups({"user:answer"})
+     * @Assert\NotBlank
      */
-    private $answer;
+    private string $answer = '';
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      * @Groups({"user:answer"})
+     * @Assert\NotNull
      */
     private ?bool $isRight = null;
 
