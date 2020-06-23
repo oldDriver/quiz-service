@@ -34,7 +34,7 @@ class ResultService
 
     public function startQuiz(User $user, Quiz $quiz): Result
     {
-        $result = new Result();
+        $result = $this->createResult();
         $result->setQuiz($quiz);
         $result->setUserId($user->getId());
         $result->setTotal($quiz->getQuestions()->count());
@@ -49,7 +49,7 @@ class ResultService
         if ($this->isExistingQuestion($data, $question)) {
             return null;
         }
-        $userAnswer = new UserAnswer();
+        $userAnswer = $this->createUserAnswer();
         $userAnswer->setQuestion($question);
         $userAnswer->setAnswer($answer);
         $data = $this->serializer->serialize($userAnswer, 'json', ['groups' => 'user:answer']);
@@ -72,5 +72,18 @@ class ResultService
             $questionIds[] = $arrayItem['question']['id'];
         }
         return in_array($question->getId(), $questionIds);
+    }
+
+    /**
+     * Simple factory
+     */
+    public function createResult(): Result
+    {
+        return new Result();
+    }
+
+    public function createUserAnswer(): UserAnswer
+    {
+        return new UserAnswer();
     }
 }

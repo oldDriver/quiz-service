@@ -1,26 +1,28 @@
 App\Entity\Answer:
-    answer_dummy_1:
+    answer_dummy_1_1:
         question: "@question_dev_1"
         answer: "2024"
-    answer_dummy_2:
+    answer_dummy_1_2:
         question: "@question_dev_1"
         answer: "0024"
-    answer_dummy_3:
+    answer_dummy_1_3:
         question: "@question_dev_1"
         answer: "0044"
-    answer_dummy_4:
+    answer_dummy_1_4:
         question: "@question_dev_1"
         answer: "2044"
-    answer_dev_1_1:
+    answer_dummy_2_1:
         question: "@question_dev_2"
         answer: "4"
         isRight: true
-    answer_dev_1_2:
+    answer_dummy_2_2:
         question: "@question_dev_2"
         answer: "5"
-    answer_dev_1_3:
+        isRight: false
+    answer_dummy_2_3:
         question: "@question_dev_2"
         answer: "11"
+        isRight: false
     answer_design_pattern_1_1:
         question: "@question_design_pattern_abstract_factory"
         answer: "Creational"
