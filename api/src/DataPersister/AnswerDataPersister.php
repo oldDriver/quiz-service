@@ -19,24 +19,25 @@ class AnswerDataPersister implements ContextAwareDataPersisterInterface
     private IriConverterInterface $iriConverter;
     private ResultService $resultService;
     private EntityManagerInterface $em;
+ 
     public function __construct(
         TokenStorageInterface $tokenStorage,
         IriConverterInterface $iriConverter,
         ResultService $resultService,
         EntityManagerInterface $em
-        ) {
+    ) {
             $this->tokenStorage = $tokenStorage;
             $this->iriConverter = $iriConverter;
             $this->resultService = $resultService;
             $this->em = $em;
     }
-    
+
     public function supports($data, array $context = []): bool
     {
         return $data instanceof AnswerInput;
     }
-    
-    public function persist($data, array $context = [])
+
+    public function persist($data, array $context = []): Result
     {
         // call your persistence layer to save $data
         if (null === $this->tokenStorage->getToken() || !$this->tokenStorage->getToken()->getUser() instanceof User) {
@@ -56,7 +57,7 @@ class AnswerDataPersister implements ContextAwareDataPersisterInterface
         }
         return $result;
     }
-    
+
     public function remove($data, array $context = [])
     {
         return false;

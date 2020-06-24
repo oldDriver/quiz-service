@@ -244,6 +244,4 @@ class Result
 
         return $this;
     }
-    
 }
-

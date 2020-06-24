@@ -23,7 +23,7 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
         IriConverterInterface $iriConverter,
         ResultService $resultService,
         EntityManagerInterface $em
-        ) {
+    ) {
             $this->tokenStorage = $tokenStorage;
             $this->iriConverter = $iriConverter;
             $this->resultService = $resultService;
@@ -35,7 +35,7 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
         return $data instanceof QuizStart;
     }
 
-    public function persist($data, array $context = [])
+    public function persist($data, array $context = []): Result
     {
         // call your persistence layer to save $data
         if (null === $this->tokenStorage->getToken() || !$this->tokenStorage->getToken()->getUser() instanceof User) {
@@ -50,8 +50,8 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
         }
         return $result;
     }
-    
-    public function remove($data, array $context = [])
+
+    public function remove($data, array $context = []): bool
     {
         return false;
     }

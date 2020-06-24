@@ -9,6 +9,7 @@ use Doctrine\Persistence\Event\LifecycleEventArgs;
 class QuestionListener
 {
     private QuestionService $questionService;
+
     public function __construct(QuestionService $questionService)
     {
         $this->questionService = $questionService;

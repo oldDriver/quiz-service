@@ -8,17 +8,17 @@ use Doctrine\Common\Annotations\Reader;
 
 final class UserFilterConfigurator
 {
-    private $em;
-    private $tokenStorage;
-    private $reader;
-    
+    private EntityManagerInterface $em;
+    private TokenStorageInterface $tokenStorage;
+    private Reader $reader;
+
     public function __construct(EntityManagerInterface $em, TokenStorageInterface $tokenStorage, Reader $reader)
     {
         $this->em = $em;
         $this->tokenStorage = $tokenStorage;
         $this->reader = $reader;
     }
-    
+
     public function onKernelRequest(): void
     {
         if ($user = $this->getUser()) {

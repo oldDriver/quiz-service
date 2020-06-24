@@ -9,20 +9,18 @@ use Doctrine\Common\Annotations\Reader;
 final class UserFilter extends SQLFilter
 {
     private $reader;
-    
+
     public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias): string
     {
         if (null === $this->reader) {
             throw new \RuntimeException(sprintf('An annotation reader must be provided. Be sure to call "%s::setAnnotationReader()".', __CLASS__));
         }
-        
         // The Doctrine filter is called for any query on any entity
         // Check if the current entity is "user aware" (marked with an annotation)
         $userAware = $this->reader->getClassAnnotation($targetEntity->getReflectionClass(), UserAware::class);
         if (!$userAware) {
             return '';
         }
-        
         $fieldName = $userAware->userFieldName;
         try {
             // Don't worry, getParameter automatically escapes parameters
@@ -35,10 +33,9 @@ final class UserFilter extends SQLFilter
         if (empty($fieldName) || empty($userId)) {
             return '';
         }
-        
         return sprintf('%s.%s = %s', $targetTableAlias, $fieldName, $userId);
     }
-    
+
     public function setAnnotationReader(Reader $reader): void
     {
         $this->reader = $reader;
