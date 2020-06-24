@@ -7,12 +7,12 @@ use App\Service\ResultService;
 use App\ValueObject\UserAnswer;
 use App\Entity\Result;
 use App\Entity\Quiz;
-use App\Entity\User;
+use App\Security\User;
 use App\Tests\TestHelper;
 use Doctrine\Common\Collections\Collection;
 use App\Entity\Question;
 
-class ResultserviceTest extends TestCase
+class ResultServiceTest extends TestCase
 {
     /**
      * @test

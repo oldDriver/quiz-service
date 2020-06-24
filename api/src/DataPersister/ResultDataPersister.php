@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use App\Service\ResultService;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Dto\QuizStart;
-use App\Entity\User;
+use App\Security\User;
 
 
 class ResultDataPersister implements ContextAwareDataPersisterInterface
@@ -17,6 +17,7 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
     private IriConverterInterface $iriConverter;
     private ResultService $resultService;
     private EntityManagerInterface $em;
+
     public function __construct(
         TokenStorageInterface $tokenStorage,
         IriConverterInterface $iriConverter,
@@ -28,12 +29,12 @@ class ResultDataPersister implements ContextAwareDataPersisterInterface
             $this->resultService = $resultService;
             $this->em = $em;
     }
-    
+
     public function supports($data, array $context = []): bool
     {
         return $data instanceof QuizStart;
     }
-    
+
     public function persist($data, array $context = [])
     {
         // call your persistence layer to save $data

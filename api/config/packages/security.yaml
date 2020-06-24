@@ -2,7 +2,7 @@ security:
     providers:
         jwt:
             lexik_jwt:
-                class: App\Entity\User
+                class: App\Security\User
     role_hierarchy:
         ROLE_USER: ROLE_USER
         ROLE_EDITOR: ROLE_EDITOR
@@ -12,7 +12,6 @@ security:
             pattern: ^/_(profiler|wdt)
             security: false
         api:
-            #pattern: ^/vehicle-service/
             stateless: true
             anonymous: true
             provider: jwt

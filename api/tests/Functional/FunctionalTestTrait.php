@@ -1,7 +1,7 @@
 <?php
 namespace App\Tests\Functional;
 
-use App\Entity\User;
+use App\Security\User;
 use App\Entity\Quiz;
 
 trait FunctionalTestTrait

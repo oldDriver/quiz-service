@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Security;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserInterface;

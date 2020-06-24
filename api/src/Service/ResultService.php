@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace App\Service;
 
-use App\Entity\User;
+use App\Security\User;
 use App\Entity\Quiz;
 use App\Entity\Result;
 use Doctrine\ORM\EntityManagerInterface;
