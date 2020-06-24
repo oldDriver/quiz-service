@@ -7,15 +7,9 @@ use App\Entity\Result;
 
 class ResultStatusType extends AbstractEnumType
 {
-    /**
-     * @var string
-     */
-    protected $name = 'enum_result_status';
+    protected string $name = 'enum_result_status';
 
-    /**
-     * @var array
-     */
-    protected $values = [
+    protected array $values = [
         Result::STATUS_NEW,
         Result::STATUS_ACTIVE,
         Result::STATUS_FINISHED,
