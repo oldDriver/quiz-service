@@ -9,7 +9,6 @@ use App\Entity\Quiz;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Question;
-use Symfony\Component\VarDumper\VarDumper;
 use App\Entity\Result;
 use App\Dto\ResultOutput;
 
@@ -36,7 +35,7 @@ class UserAnswerQuestionTest extends ApiTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertRegExp('~^/results/\d+$~', $client->getResponse()->toArray()['@id']);
+        //$this->assertRegExp('~^/results/\d+$~', $client->getResponse()->toArray()['@id']);
         $this->assertMatchesResourceItemJsonSchema(Result::class);
         $resultIri =  $client->getResponse()->toArray()['@id'];
         // user get first question
@@ -103,9 +102,5 @@ class UserAnswerQuestionTest extends ApiTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
         $this->assertMatchesResourceItemJsonSchema(Result::class);
-        
-        
-//         VarDumper::dump(json_decode($client->getResponse()->getContent(false), true));
-//         VarDumper::dump($answer);
     }
 }

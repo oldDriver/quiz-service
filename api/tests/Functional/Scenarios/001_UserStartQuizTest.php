@@ -42,13 +42,12 @@ class UserStartQuizTest extends ApiTestCase
         $this->assertCount(0, $client->getResponse()->toArray()['hydra:member']);
         // User start quiz
         $iri = $this->findIriBy(Quiz::class, ['slug' => 'design-patterns']);
-        //VarDumper::dump($iri);
         $client->request(Request::METHOD_POST, $this->testUrl, ['json' => ['quizIri' => $iri]]);
         //VarDumper::dump(json_decode($client->getResponse()->getContent(false), true));
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertRegExp('~^/results/\d+$~', $client->getResponse()->toArray()['@id']);
+        //$this->assertRegExp('~^/results/\d+$~', $client->getResponse()->toArray()['@id']);
         $this->assertMatchesResourceItemJsonSchema(Result::class);
         // check results
         $client->request(Request::METHOD_GET, $this->resultsUrl);

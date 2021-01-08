@@ -6,7 +6,6 @@ use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use Hautelook\AliceBundle\PhpUnit\BaseDatabaseTrait;
 use App\Tests\Functional\FunctionalTestTrait;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\VarDumper\VarDumper;
 use App\Entity\Question;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,7 +30,6 @@ class QuestionCrudTest extends ApiTestCase
         $client = $this->getJwtEditorClient();
         $client->request(Request::METHOD_POST, $this->testUrl, ['json' => $this->getQuestionCreateArray()]);
         $this->assertResponseIsSuccessful();
-        //VarDumper::dump(json_decode($client->getResponse()->toArray(), true));
         $client = $this->getJwtAdminClient();
         $iri = $this->findIriBy(Question::class, ['slug' => 'quiz-for-developers-2']);
         $client->request(Request::METHOD_DELETE, $iri);
